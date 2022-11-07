@@ -502,7 +502,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-release-plugin</artifactId>
-        <version>3.0.0-M6</version>
+        <version>3.0.0-M7</version>
         <configuration>
           <!--
             tests are used to test Jenkins, not the acceptance test harness,
