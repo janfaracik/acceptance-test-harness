@@ -83,7 +83,7 @@
     <dependency>
       <groupId>com.cloudbees</groupId>
       <artifactId>extensibility</artifactId>
-      <version>1.5</version>
+      <version>1.7</version>
       <exclusions>
         <exclusion>
           <groupId>org.sonatype.sisu</groupId>
