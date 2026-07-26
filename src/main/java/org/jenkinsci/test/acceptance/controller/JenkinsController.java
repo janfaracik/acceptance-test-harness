@@ -105,7 +105,9 @@ public abstract class JenkinsController implements IJenkinsController, AutoClean
         }
         try {
             URL url = getUrl();
-            // Inject the cookie to disable sticky elements.
+            // Inject the cookie to disable sticky elements / nested scrollers.
+            // Prefer also setting -Dhudson.Functions.disableStickyPositioning=true on the
+            // Jenkins-under-test JVM (see WinstoneController) — that does not depend on the browser.
             Cookie c = new Cookie.Builder("disableStickyPositioning", "true")
                     .isSecure("https".equalsIgnoreCase(url.getProtocol()))
                     .sameSite("Lax")
@@ -118,6 +120,8 @@ public abstract class JenkinsController implements IJenkinsController, AutoClean
                 // but this part needs to ensure it runs against one controller at once
                 d.navigate().to(url);
                 d.manage().addCookie(c);
+                // Reload so the first page is rendered with data-disable-sticky="true".
+                d.navigate().refresh();
             }
         } catch (Exception e) {
             LOGGER.log(

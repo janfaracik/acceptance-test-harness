@@ -3,7 +3,7 @@ set DISPLAY=:0
 set INTERACTIVE=false
 set BROWSER=remote-webdriver-firefox
 set REMOTE_WEBDRIVER_URL=http://127.0.0.1:4444/wd/hub
-set JENKINS_JAVA_OPTS=-Xmx1280m
+set JENKINS_JAVA_OPTS=-Xmx1280m -Dhudson.Functions.disableStickyPositioning=true
 
 @REM Jenkins binds to 0.0.0.0 (OMG) so we can use any network but the docker network.
 @REM but we may as well use the default network
